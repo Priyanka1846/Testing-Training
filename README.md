@@ -1,3 +1,18 @@
+### 17/09/2029
+## Test Case Document
+
+Task Link - https://docs.google.com/spreadsheets/d/1RXd-QSDysk9iYf62sDZA2-BzGseUhxkbaIV3ppgLlEo/edit?gid=0#gid=0
+
+### 18/09/2026
+## Test Case Using Jira
+
+Task Link- https://priyankasworkspace-34516593.atlassian.net/browse/T1-22
+
+### 22/09/2026
+## Equivalence Partition Test Case Exercises 
+
+Task Link - https://docs.google.com/spreadsheets/d/16cv3-dBqDuVq0QTk5Pfz7ul7JH2lY7xcsgbYGzAl4gM/edit?gid=0#gid=0
+
 ### 23/09/2026
 ## Python Code Implementation
 
