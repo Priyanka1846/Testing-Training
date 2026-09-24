@@ -173,15 +173,15 @@ print(fact)
 Created and documented the test matrix with requirements and test cases.
 
 ### Metrics Covered
-•	Test Coverage
-•	Test Execution Percentage
-•	Pass Rate
-•	Fail Rate
-•	Total Defects
-•	Critical Defect Percentage
-•	Defect Distribution
-•	Mean Response Time
-•	Median Response Time
+- Test Coverage
+- Test Execution Percentage
+- Pass Rate
+- Fail Rate
+- Total Defects
+- Critical Defect Percentage
+- Defect Distribution
+- Mean Response Time
+- Median Response Time
 
 **Task:** [Test Metrics](https://docs.google.com/spreadsheets/d/1kFllSGDlt9accJvxfsRuHqLC3M2HJn2ZAn0iDP76MyY/edit?gid=0#gid=0)
 
