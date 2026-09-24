@@ -166,3 +166,23 @@ for i in range(1, n + 1):
 print(fact)
 ```
 ---
+## 24 September 2026
+
+### Test Metrix
+
+Created and documented the test matrix with requirements and test cases.
+
+### Metrics Covered
+•	Test Coverage
+•	Test Execution Percentage
+•	Pass Rate
+•	Fail Rate
+•	Total Defects
+•	Critical Defect Percentage
+•	Defect Distribution
+•	Mean Response Time
+•	Median Response Time
+
+**Task:** https://docs.google.com/spreadsheets/d/1kFllSGDlt9accJvxfsRuHqLC3M2HJn2ZAn0iDP76MyY/edit?gid=0#gid=0
+
+---
