@@ -458,3 +458,239 @@ for i in range(1, n):
 for x in result:
     print(x[0], x[1])
 ```
+---
+
+## 29 September 2026
+
+### Python Code Implementation
+
+#### 1. NumPy-based assignment
+
+```python
+scores = np.array([78, 65, 89, 56, 92])
+
+print("Q1 - Student Marks Array")
+print("Array:", scores)
+print("Dimensions:", scores.ndim)
+print("Shape:", scores.shape)
+print("Number of elements:", scores.size)
+print("Data type:", scores.dtype)
+```
+
+
+#### 2. Calculate area of a circle
+
+```python
+student_scores = np.array([72, 85, 64, 90, 76])
+
+print("\nQ2 - Student Marks Access")
+
+for number, score in enumerate(student_scores, start=1):
+    print(f"Student {number}: {score}")
+
+print("Students 2 to 4:", student_scores[1:4])
+```
+
+
+#### 3. Count character frequency in a string
+
+```python
+all_marks = np.array([
+    78, 85, 90,
+    65, 72, 80,
+    88, 91, 84,
+    56, 62, 70,
+    95, 89, 92
+])
+
+marks_table = all_marks.reshape(5, 3)
+
+print("\nQ3 - Subject-wise Marks")
+print(marks_table)
+```
+
+
+#### 4. Calculate factorial
+
+```python
+internal_marks = np.array([25, 38, 42, 30, 41])
+external_marks = np.array([45, 30, 40, 45, 44])
+
+combined_marks = internal_marks + external_marks
+
+print("\nQ4 - Final Marks")
+print("Final marks:", combined_marks)
+```
+
+#### 5. Generate Fibonacci series
+
+```python
+test_scores = np.array([45, 78, 56, 32, 91])
+student_numbers = np.arange(1, len(test_scores) + 1)
+
+passed = test_scores >= 50
+
+print("\nQ5 - Students Scoring 50 or Above")
+print("Marks:", test_scores[passed])
+print("Student numbers:", student_numbers[passed])
+```
+
+
+#### 6. Merge two dictionaries
+
+```python
+marks_matrix = np.array([
+    [78, 85, 90],
+    [65, 72, 80],
+    [88, 91, 84],
+    [56, 62, 70],
+    [95, 89, 92]
+])
+
+student_averages = np.mean(marks_matrix, axis=1)
+
+print("\nQ6 - Average Marks")
+for i, average in enumerate(student_averages, start=1):
+    print(f"Student {i} average: {average:.2f}")
+```
+
+#### 7. Check prime numbers
+
+```python
+class_marks = np.array([67, 82, 91, 74, 58])
+
+print("\nQ7 - Class Performance Statistics")
+print("Total:", np.sum(class_marks))
+print("Average:", np.mean(class_marks))
+print("Highest:", np.max(class_marks))
+print("Lowest:", np.min(class_marks))
+print("Standard deviation:", np.std(class_marks))
+```
+
+#### 8. Reverse a string
+
+```python
+subject_totals = np.sum(marks_matrix, axis=0)
+
+print("\nQ8 - Subject-wise Performance")
+print("Total marks in each subject:", subject_totals)
+```
+
+#### 9. Remove duplicate elements from a list
+
+```python
+individual_totals = np.sum(marks_matrix, axis=1)
+
+print("\nQ9 - Student-wise Performance")
+for i, total in enumerate(individual_totals, start=1):
+    print(f"Student {i} total: {total}")
+```
+
+#### 10. Find the second-largest element
+
+```python
+total_scores = np.array([245, 278, 219, 290, 256])
+
+ordered_scores = np.sort(total_scores)[::-1]
+
+print("\nQ10 - Student Ranking")
+for position, score in enumerate(ordered_scores, start=1):
+    print(f"Rank {position}: {score}")
+```
+
+#### 11. Calculate square using lambda
+
+```python
+duplicate_scores = np.array([85, 92, 85, 76, 92])
+
+different_scores = np.unique(duplicate_scores)
+
+print("\nQ11 - Unique Marks")
+print("Unique marks:", different_scores)
+```
+
+#### 12. Display employee information using functions
+
+```python
+scores_with_missing = np.array([78, 85, np.nan, 92, 67])
+
+valid_average = np.nanmean(scores_with_missing)
+
+print("\nQ12 - Average Without Missing Value")
+print("Average marks:", valid_average)
+```
+
+#### 13. Perform mathematical operations using functions
+
+```python
+grade_marks = np.array([95, 82, 74, 61, 45])
+
+grades = np.select(
+    [
+        grade_marks >= 90,
+        grade_marks >= 80,
+        grade_marks >= 70,
+        grade_marks >= 60
+    ],
+    [
+        "A",
+        "B",
+        "C",
+        "D"
+    ],
+    default="F"
+)
+
+print("\nQ13 - Grade Classification")
+print("Marks:", grade_marks)
+print("Grades:", grades)
+```
+
+#### 14. Remove duplicates using a function
+
+```python
+random_scores = np.random.randint(0, 101, size=5)
+
+print("\nQ14 - Random Marks")
+print("Generated marks:", random_scores)
+print("Total:", np.sum(random_scores))
+print("Average:", np.mean(random_scores))
+print("Highest:", np.max(random_scores))
+print("Lowest:", np.min(random_scores))
+print("Standard deviation:", np.std(random_scores))
+```
+
+#### 15. Sort tuple elements using a function
+
+```python
+performance_data = np.array([
+    [78, 85, 90],
+    [65, 72, 80],
+    [88, 91, 84],
+    [56, 62, 70],
+    [95, 89, 92]
+])
+
+totals = np.sum(performance_data, axis=1)
+averages = np.mean(performance_data, axis=1)
+highest_scores = np.max(performance_data, axis=1)
+lowest_scores = np.min(performance_data, axis=1)
+
+class_average = np.mean(averages)
+above_average = averages > class_average
+
+print("\nQ15 - Student Performance Analysis")
+
+for i in range(len(performance_data)):
+    print(
+        f"Student {i + 1}: "
+        f"Total = {totals[i]}, "
+        f"Average = {averages[i]:.2f}, "
+        f"Highest = {highest_scores[i]}, "
+        f"Lowest = {lowest_scores[i]}"
+    )
+
+print("Class average:", round(class_average, 2))
+print("Students above class average:",
+      np.where(above_average)[0] + 1)
+```
