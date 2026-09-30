@@ -464,9 +464,11 @@ for x in result:
 
 ### Python Code Implementation
 
-#### 1. NumPy-based assignment
+#### 1. NumPy-based Assignment
 
 ```python
+import numpy as np
+
 scores = np.array([78, 65, 89, 56, 92])
 
 print("Q1 - Student Marks Array")
@@ -477,220 +479,220 @@ print("Number of elements:", scores.size)
 print("Data type:", scores.dtype)
 ```
 
-
-#### 2. Calculate area of a circle
+#### 2. Calculate Area of a Circle
 
 ```python
-student_scores = np.array([72, 85, 64, 90, 76])
+import math
 
-print("\nQ2 - Student Marks Access")
+radius = float(input())
 
-for number, score in enumerate(student_scores, start=1):
-    print(f"Student {number}: {score}")
+area = math.pi * radius * radius
 
-print("Students 2 to 4:", student_scores[1:4])
+print("Area of circle:", round(area, 2))
 ```
 
-
-#### 3. Count character frequency in a string
+#### 3. Count Character Frequency in a String
 
 ```python
-all_marks = np.array([
-    78, 85, 90,
-    65, 72, 80,
-    88, 91, 84,
-    56, 62, 70,
-    95, 89, 92
-])
+text = input()
 
-marks_table = all_marks.reshape(5, 3)
+frequency = {}
 
-print("\nQ3 - Subject-wise Marks")
-print(marks_table)
+for char in text:
+    if char != " ":
+        frequency[char] = frequency.get(char, 0) + 1
+
+print("Character frequency:")
+
+for char, count in frequency.items():
+    print(char, ":", count)
 ```
 
-
-#### 4. Calculate factorial
+#### 4. Calculate Factorial
 
 ```python
-internal_marks = np.array([25, 38, 42, 30, 41])
-external_marks = np.array([45, 30, 40, 45, 44])
+number = int(input())
 
-combined_marks = internal_marks + external_marks
+factorial = 1
 
-print("\nQ4 - Final Marks")
-print("Final marks:", combined_marks)
+for value in range(2, number + 1):
+    factorial *= value
+
+print("Factorial:", factorial)
 ```
 
-#### 5. Generate Fibonacci series
+#### 5. Generate Fibonacci Series
 
 ```python
-test_scores = np.array([45, 78, 56, 32, 91])
-student_numbers = np.arange(1, len(test_scores) + 1)
+num = int(input())
 
-passed = test_scores >= 50
+first, second = 0, 1
+series = []
 
-print("\nQ5 - Students Scoring 50 or Above")
-print("Marks:", test_scores[passed])
-print("Student numbers:", student_numbers[passed])
+for _ in range(num):
+    series.append(first)
+    first, second = second, first + second
+
+print("Fibonacci series:", series)
 ```
 
-
-#### 6. Merge two dictionaries
+#### 6. Merge Two Dictionaries
 
 ```python
-marks_matrix = np.array([
-    [78, 85, 90],
-    [65, 72, 80],
-    [88, 91, 84],
-    [56, 62, 70],
-    [95, 89, 92]
-])
+dict_one = {
+    "name": "Priyanka",
+    "age": 20
+}
 
-student_averages = np.mean(marks_matrix, axis=1)
+dict_two = {
+    "course": "AI & DS",
+    "year": 3
+}
 
-print("\nQ6 - Average Marks")
-for i, average in enumerate(student_averages, start=1):
-    print(f"Student {i} average: {average:.2f}")
+merged = {**dict_one, **dict_two}
+
+print("Merged dictionary:", merged)
 ```
 
-#### 7. Check prime numbers
+#### 7. Check Prime Numbers
 
 ```python
-class_marks = np.array([67, 82, 91, 74, 58])
+n = int(input())
 
-print("\nQ7 - Class Performance Statistics")
-print("Total:", np.sum(class_marks))
-print("Average:", np.mean(class_marks))
-print("Highest:", np.max(class_marks))
-print("Lowest:", np.min(class_marks))
-print("Standard deviation:", np.std(class_marks))
+if n < 2:
+    is_prime = False
+else:
+    is_prime = True
+
+    for divisor in range(2, int(n ** 0.5) + 1):
+        if n % divisor == 0:
+            is_prime = False
+            break
+
+if is_prime:
+    print(n, "is a prime number")
+else:
+    print(n, "is not a prime number")
 ```
 
-#### 8. Reverse a string
+#### 8. Reverse a String
 
 ```python
-subject_totals = np.sum(marks_matrix, axis=0)
+text = input()
 
-print("\nQ8 - Subject-wise Performance")
-print("Total marks in each subject:", subject_totals)
+reversed_text = text[::-1]
+
+print("Reversed string:", reversed_text)
 ```
 
-#### 9. Remove duplicate elements from a list
+#### 9. Remove Duplicate Elements from a List
 
 ```python
-individual_totals = np.sum(marks_matrix, axis=1)
+numbers = [10, 20, 10, 30, 20, 40, 30]
 
-print("\nQ9 - Student-wise Performance")
-for i, total in enumerate(individual_totals, start=1):
-    print(f"Student {i} total: {total}")
+unique_values = list(dict.fromkeys(numbers))
+
+print("Original list:", numbers)
+print("After removing duplicates:", unique_values)
 ```
 
-#### 10. Find the second-largest element
+#### 10. Find the Second-Largest Element
 
 ```python
-total_scores = np.array([245, 278, 219, 290, 256])
+numbers = [45, 12, 78, 34, 90, 56]
 
-ordered_scores = np.sort(total_scores)[::-1]
+distinct_numbers = sorted(set(numbers), reverse=True)
 
-print("\nQ10 - Student Ranking")
-for position, score in enumerate(ordered_scores, start=1):
-    print(f"Rank {position}: {score}")
+if len(distinct_numbers) >= 2:
+    print("Second-largest element:", distinct_numbers[1])
+else:
+    print("Second-largest element does not exist")
 ```
 
-#### 11. Calculate square using lambda
+#### 11. Calculate Square Using Lambda
 
 ```python
-duplicate_scores = np.array([85, 92, 85, 76, 92])
+number = float(input())
 
-different_scores = np.unique(duplicate_scores)
+square = lambda x: x * x
 
-print("\nQ11 - Unique Marks")
-print("Unique marks:", different_scores)
+print("Square:", square(number))
 ```
 
-#### 12. Display employee information using functions
+#### 12. Display Employee Information Using Functions
 
 ```python
-scores_with_missing = np.array([78, 85, np.nan, 92, 67])
+def show_employee(name, employee_id, department):
+    print("Employee Name:", name)
+    print("Employee ID:", employee_id)
+    print("Department:", department)
 
-valid_average = np.nanmean(scores_with_missing)
 
-print("\nQ12 - Average Without Missing Value")
-print("Average marks:", valid_average)
-```
-
-#### 13. Perform mathematical operations using functions
-
-```python
-grade_marks = np.array([95, 82, 74, 61, 45])
-
-grades = np.select(
-    [
-        grade_marks >= 90,
-        grade_marks >= 80,
-        grade_marks >= 70,
-        grade_marks >= 60
-    ],
-    [
-        "A",
-        "B",
-        "C",
-        "D"
-    ],
-    default="F"
+show_employee(
+    "Priyanka",
+    "EMP101",
+    "Automation Testing"
 )
-
-print("\nQ13 - Grade Classification")
-print("Marks:", grade_marks)
-print("Grades:", grades)
 ```
 
-#### 14. Remove duplicates using a function
+#### 13. Perform Mathematical Operations Using Functions
 
 ```python
-random_scores = np.random.randint(0, 101, size=5)
+def addition(a, b):
+    return a + b
 
-print("\nQ14 - Random Marks")
-print("Generated marks:", random_scores)
-print("Total:", np.sum(random_scores))
-print("Average:", np.mean(random_scores))
-print("Highest:", np.max(random_scores))
-print("Lowest:", np.min(random_scores))
-print("Standard deviation:", np.std(random_scores))
+
+def subtraction(a, b):
+    return a - b
+
+
+def multiplication(a, b):
+    return a * b
+
+
+def division(a, b):
+    if b == 0:
+        return "Division by zero is not possible"
+    return a / b
+
+
+x = float(input())
+y = float(input())
+
+print("Addition:", addition(x, y))
+print("Subtraction:", subtraction(x, y))
+print("Multiplication:", multiplication(x, y))
+print("Division:", division(x, y))
 ```
 
-#### 15. Sort tuple elements using a function
+#### 14. Remove Duplicates Using a Function
 
 ```python
-performance_data = np.array([
-    [78, 85, 90],
-    [65, 72, 80],
-    [88, 91, 84],
-    [56, 62, 70],
-    [95, 89, 92]
-])
+def remove_duplicates(items):
+    result = []
 
-totals = np.sum(performance_data, axis=1)
-averages = np.mean(performance_data, axis=1)
-highest_scores = np.max(performance_data, axis=1)
-lowest_scores = np.min(performance_data, axis=1)
+    for item in items:
+        if item not in result:
+            result.append(item)
 
-class_average = np.mean(averages)
-above_average = averages > class_average
+    return result
 
-print("\nQ15 - Student Performance Analysis")
 
-for i in range(len(performance_data)):
-    print(
-        f"Student {i + 1}: "
-        f"Total = {totals[i]}, "
-        f"Average = {averages[i]:.2f}, "
-        f"Highest = {highest_scores[i]}, "
-        f"Lowest = {lowest_scores[i]}"
-    )
+data = [5, 8, 5, 2, 8, 9, 2, 10]
 
-print("Class average:", round(class_average, 2))
-print("Students above class average:",
-      np.where(above_average)[0] + 1)
+print("Original data:", data)
+print("Unique data:", remove_duplicates(data))
+```
+
+#### 15. Sort Tuple Elements Using a Function
+
+```python
+def sort_tuple(values):
+    return tuple(sorted(values))
+
+
+data = (45, 12, 78, 23, 9, 56)
+
+print("Original tuple:", data)
+print("Sorted tuple:", sort_tuple(data))
 ```
