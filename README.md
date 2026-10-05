@@ -698,3 +698,132 @@ print("Sorted tuple:", sort_tuple(data))
 ```
 
 ### Task Link : https://colab.research.google.com/drive/1sJAqmzjsZ4H8vlmJKtSrZD4V_94SqlBd#scrollTo=hLvtyjwqdykZ
+---
+# Selenium Practice
+
+### 1. SauceDemo Login Automation
+
+```python
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+driver = webdriver.Chrome()
+
+driver.get("https://www.saucedemo.com/")
+
+username = driver.find_element(By.ID, "user-name")
+password = driver.find_element(By.NAME, "password")
+login = driver.find_element(By.ID, "login-button")
+
+username.send_keys("standard_user")
+password.send_keys("secret_sauce")
+
+print(username.get_attribute("placeholder"))
+print(login.is_enabled())
+print(username.is_displayed())
+
+login.click()
+
+driver.quit()
+```
+
+---
+
+### 2. Google Search Automation
+
+```python
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
+
+driver = webdriver.Chrome()
+
+driver.get("https://www.google.com/")
+
+search = driver.find_element(By.NAME, "q")
+
+search.send_keys("Actor Vijay Deverakonda")
+
+print(search.get_attribute("value"))
+
+search.send_keys(Keys.ENTER)
+
+time.sleep(3)
+
+driver.get("https://www.google.com/search?sca_esv=a2875db628506375&rlz=1C1YTUH_en-GBIN1186IN1186&sxsrf=APpeQntHcHn-8xyZ42s969XnPjuHh18nmw:1791179420776&udm=2&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832QGGMdFXpDyzkQgEdtB8w9zZ67Faapx8wIWp8O3JpX8ZbooJTg6IC0i9eLmD380spMllksdFpgm79ImriDjfCnTBYJEsBPGPiZmxyursypEsGL2FRhZVp5hPiM06simLt3pas0OhU38U7j6-7ppr8W_hIPQMf58dcF_rZDpJ3v86825oJA&q=vijay+deverakonda&sa=X&ved=2ahUKEwjSuOqol6KXAxVOjOEIHVLmM80QtKgLegQIFRAB&biw=1707&bih=825&dpr=1.13#sv=CAMSUxoyKhBlF5eTE0TzVsZWZkZ1hNMg5ReXkxNE81bGVmZGdYTToORThhOGRFUU9fS3dXRU0gBCoXCgFzEhBlLVF5eTE0TzVsZWZkZ1hNGAEwAVACGAcgj_vkogdKCBACGAEgAigB")
+
+time.sleep(5)
+```
+
+---
+
+### 3. SauceDemo Product List
+
+```python
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+driver = webdriver.Chrome()
+
+driver.get("https://www.saucedemo.com/")
+
+username = driver.find_element(By.ID, "user-name")
+password = driver.find_element(By.ID, "password")
+login = driver.find_element(By.ID, "login-button")
+
+username.send_keys("standard_user")
+password.send_keys("secret_sauce")
+
+login.click()
+
+products = driver.find_elements(By.CLASS_NAME, "inventory_item_name")
+
+for product in products:
+    print(product.text)
+
+driver.quit()
+```
+
+---
+
+### 4. Flipkart Login Automation
+
+```python
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+driver = webdriver.Chrome()
+driver.maximize_window()
+
+driver.get("https://www.flipkart.com/account/login")
+
+time.sleep(3)
+
+mobile = input("Enter your mobile number: ")
+
+mobile_box = driver.find_element(
+    By.XPATH,
+    "//input[@type='text' or @type='tel' or @type='number']"
+)
+
+mobile_box.send_keys(mobile)
+
+time.sleep(2)
+
+continue_button = driver.find_element(
+    By.XPATH,
+    "//button[contains(., 'Continue')]"
+)
+
+continue_button.click()
+
+time.sleep(5)
+
+print("Continue clicked successfully.")
+
+input("Press Enter to close the browser...")
+
+driver.quit()
+```
