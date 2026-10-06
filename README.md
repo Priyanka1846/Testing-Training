@@ -699,7 +699,8 @@ print("Sorted tuple:", sort_tuple(data))
 
 ### Task Link : https://colab.research.google.com/drive/1sJAqmzjsZ4H8vlmJKtSrZD4V_94SqlBd#scrollTo=hLvtyjwqdykZ
 ---
-# Selenium Practice - 05/10/2026
+## 06 October 2026
+### Selenium Practice
 
 ### 1. SauceDemo Login Automation
 
@@ -828,7 +829,8 @@ input("Press Enter to close the browser...")
 driver.quit()
 ```
 ---
-# Selenium-Python Practice [06-10-2026]
+## 06 October 2026
+### Selenium-Python Practice 
 
 ```python
 from selenium import webdriver
