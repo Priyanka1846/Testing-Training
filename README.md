@@ -827,3 +827,43 @@ input("Press Enter to close the browser...")
 
 driver.quit()
 ```
+---
+# Selenium-Python Practice [06-10-2026]
+
+```python
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import Select
+import time
+
+driver = webdriver.Chrome()
+driver.get("https://vinothqaacademy.com/demo-site/")
+
+wait = WebDriverWait(driver, 15)
+
+first_name = wait.until(EC.presence_of_element_located((By.ID, "vfb-5")))
+first_name.send_keys("Priyanka")
+
+last_name = wait.until(EC.presence_of_element_located((By.ID, "vfb-7")))
+last_name.send_keys("K")
+
+wait.until(EC.element_to_be_clickable((By.ID, "vfb-31-2"))).click()
+
+address = wait.until(EC.presence_of_element_located((By.ID, "vfb-13-address")))
+address.send_keys("123 Main Street")
+
+driver.find_element(By.ID, "vfb-13-address-2").send_keys("Apt 101")
+driver.find_element(By.ID, "vfb-13-city").send_keys("Chennai")
+driver.find_element(By.ID, "vfb-13-state").send_keys("Tamil Nadu")
+driver.find_element(By.ID, "vfb-13-zip").send_keys("600001")
+
+country = Select(driver.find_element(By.ID, "vfb-13-country"))
+country.select_by_visible_text("India")
+time.sleep(2)
+
+driver.find_element(By.ID, "vfb-14").send_keys("priyanka.student@saveetha.ac.in")
+
+time.sleep(10)
+```
