@@ -1020,3 +1020,303 @@ input("Press Enter to close the browser...")
 
 driver.quit()
 ```
+
+---
+# 7th October 2026
+### Sauce Demo Automation Task
+
+```python
+import time
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+# TC01 - Open the online shopping website
+# Selenium Concept: driver.get()
+
+driver = webdriver.Chrome()
+driver.maximize_window()
+driver.get("https://www.saucedemo.com/")
+
+print("TC01: Shopping website opened successfully")
+
+time.sleep(3)
+
+driver.quit()
+```
+
+```python
+# TC02 - Customer clicks Delete/Remove Product
+# Selenium Concept: Alert - accept()
+
+driver = webdriver.Chrome()
+driver.maximize_window()
+driver.get("https://www.saucedemo.com/")
+
+wait = WebDriverWait(driver, 10)
+
+wait.until(EC.visibility_of_element_located((By.ID, "user-name"))).send_keys("standard_user")
+
+driver.find_element(By.ID, "password").send_keys("secret_sauce")
+driver.find_element(By.ID, "login-button").click()
+
+wait.until(EC.element_to_be_clickable((By.ID, "add-to-cart-sauce-labs-backpack"))).click()
+
+driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
+
+time.sleep(2)
+driver.find_element(By.ID, "remove-sauce-labs-backpack").click()
+
+print("TC02: Product deletion confirmed")
+
+time.sleep(3)
+
+time.sleep(3)
+
+driver.quit()
+```
+
+```python
+# TC03 - Customer clicks Delete/Remove Product but chooses Cancel
+# Selenium Concept: Alert - dismiss()
+
+driver = webdriver.Chrome()
+driver.maximize_window()
+
+driver.get("https://www.saucedemo.com/")
+
+wait = WebDriverWait(driver, 10)
+
+wait.until(EC.visibility_of_element_located((By.ID, "user-name"))).send_keys("standard_user")
+
+driver.find_element(By.ID, "password").send_keys("secret_sauce")
+driver.find_element(By.ID, "login-button").click()
+
+wait.until(EC.element_to_be_clickable((By.ID, "add-to-cart-sauce-labs-backpack"))).click()
+
+driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
+
+time.sleep(2)
+
+print("Product remains in the cart")
+
+time.sleep(3)
+
+driver.quit()
+```
+
+```python
+# TC04 - Customer enters information in a prompt popup
+# Selenium Concept: Prompt - send_keys()
+
+driver = webdriver.Chrome()
+driver.maximize_window()
+
+driver.get("https://www.saucedemo.com/")
+
+wait = WebDriverWait(driver, 10)
+
+wait.until(EC.visibility_of_element_located((By.ID, "user-name"))).send_keys("standard_user")
+
+driver.find_element(By.ID, "password").send_keys("secret_sauce")
+driver.find_element(By.ID, "login-button").click()
+
+time.sleep(2)
+
+print("Information submitted successfully")
+
+time.sleep(3)
+
+driver.quit()
+```
+
+```python
+# TC05 - Customer moves mouse over Products/Category menu
+# Selenium Concept: Mouse Hover
+
+driver = webdriver.Chrome()
+driver.maximize_window()
+
+driver.get("https://www.saucedemo.com/")
+
+wait = WebDriverWait(driver, 10)
+
+wait.until(EC.visibility_of_element_located((By.ID, "user-name"))).send_keys("standard_user")
+
+driver.find_element(By.ID, "password").send_keys("secret_sauce")
+driver.find_element(By.ID, "login-button").click()
+
+product = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "inventory_item")))
+
+ActionChains(driver).move_to_element(product).perform()
+
+print("TC05: Mouse hover performed successfully")
+
+time.sleep(3)
+
+driver.quit()
+```
+
+```python
+# TC06 - Handle Alert Popup
+# Selenium Concept: Alert - accept()
+
+driver = webdriver.Chrome()
+driver.maximize_window()
+
+driver.get("https://www.selenium.dev/selenium/web/alerts.html")
+
+wait = WebDriverWait(driver, 10)
+
+driver.find_element(By.ID, "alert").click()
+
+alert = wait.until(EC.alert_is_present())
+
+print("TC06:", alert.text)
+
+alert.accept()
+
+print("TC06: Alert accepted successfully")
+
+time.sleep(3)
+
+driver.quit()
+```
+
+```python
+# TC07 - Customer drags a product/item into shopping cart area
+# Selenium Concept: Drag & Drop
+
+driver = webdriver.Chrome()
+driver.maximize_window()
+
+driver.get("https://www.saucedemo.com/")
+
+wait = WebDriverWait(driver, 10)
+
+wait.until(EC.visibility_of_element_located((By.ID, "user-name"))).send_keys("standard_user")
+
+driver.find_element(By.ID, "password").send_keys("secret_sauce")
+driver.find_element(By.ID, "login-button").click()
+
+source = wait.until(EC.visibility_of_element_located((By.ID, "item_4_img_link")))
+
+target = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "shopping_cart_link")))
+
+ActionChains(driver).drag_and_drop(source,target).perform()
+
+print("TC07: Drag and drop performed successfully")
+
+time.sleep(3)
+
+driver.quit()
+```
+
+```python
+# TC08 - Customer searches for a product and waits for results
+# Selenium Concept: Explicit Wait
+
+driver = webdriver.Chrome()
+driver.maximize_window()
+
+driver.get("https://www.saucedemo.com/")
+
+wait = WebDriverWait(driver, 10)
+
+wait.until(EC.visibility_of_element_located((By.ID, "user-name"))).send_keys("standard_user")
+
+driver.find_element(By.ID, "password").send_keys("secret_sauce")
+driver.find_element(By.ID, "login-button").click()
+
+product = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "inventory_item")))
+
+print("TC08: Explicit wait completed successfully")
+print("Product displayed:", product.text)
+
+time.sleep(3)
+
+driver.quit()
+```
+
+```python
+# TC09 - Customer completes checkout and waits until Place Order
+# Selenium Concept: Clickable Wait
+
+driver = webdriver.Chrome()
+driver.maximize_window()
+
+driver.get("https://www.saucedemo.com/")
+
+wait = WebDriverWait(driver, 10)
+
+wait.until(EC.visibility_of_element_located((By.ID, "user-name"))).send_keys("standard_user")
+
+driver.find_element(By.ID, "password").send_keys("secret_sauce")
+driver.find_element(By.ID, "login-button").click()
+
+wait.until(EC.element_to_be_clickable((By.ID, "add-to-cart-sauce-labs-backpack"))).click()
+
+driver.find_element(By.CLASS_NAME,"shopping_cart_link").click()
+
+wait.until(EC.element_to_be_clickable((By.ID, "checkout"))).click()
+
+wait.until(EC.visibility_of_element_located((By.ID, "first-name"))).send_keys("Priyanka")
+
+driver.find_element(By.ID,"last-name").send_keys("K")
+
+driver.find_element(By.ID,"postal-code").send_keys("631501")
+
+wait.until(EC.element_to_be_clickable((By.ID, "continue"))).click()
+
+time.sleep(3)
+
+place_order = wait.until(
+    EC.element_to_be_clickable((By.ID, "finish"))
+)
+place_order.click()
+
+print("TC09: Order submitted successfully")
+
+time.sleep(3)
+
+driver.quit()
+```
+
+```python
+# TC10 - Customer completes purchase and waits for confirmation
+# Selenium Concept: Alert Wait
+
+driver = webdriver.Chrome()
+driver.maximize_window()
+
+driver.get("https://www.saucedemo.com/")
+
+wait = WebDriverWait(driver, 10)
+wait.until(EC.visibility_of_element_located((By.ID, "user-name"))).send_keys("standard_user")
+
+driver.find_element(By.ID,"password").send_keys("secret_sauce")
+driver.find_element(By.ID,"login-button").click()
+
+wait.until(EC.element_to_be_clickable((By.ID, "add-to-cart-sauce-labs-backpack"))).click()
+
+driver.find_element(By.CLASS_NAME,"shopping_cart_link").click()
+driver.find_element(By.ID,"checkout").click()
+
+wait.until(EC.visibility_of_element_located((By.ID, "first-name"))).send_keys("Priyanka")
+
+driver.find_element(By.ID,"last-name").send_keys("K")
+driver.find_element(By.ID,"postal-code").send_keys("631501")
+driver.find_element(By.ID,"continue").click()
+
+wait.until(EC.element_to_be_clickable((By.ID, "finish"))).click()
+confirmation = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "complete-header")))
+
+print("TC10:", confirmation.text)
+
+time.sleep(3)
+
+driver.quit()
+```
