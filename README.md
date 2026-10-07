@@ -699,7 +699,7 @@ print("Sorted tuple:", sort_tuple(data))
 
 ### Task Link : https://colab.research.google.com/drive/1sJAqmzjsZ4H8vlmJKtSrZD4V_94SqlBd#scrollTo=hLvtyjwqdykZ
 ---
-## 06 October 2026
+## 05 October 2026
 ### Selenium Practice
 
 ### 1. SauceDemo Login Automation
