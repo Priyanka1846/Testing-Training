@@ -1352,7 +1352,7 @@ first_name = driver.find_element(
     By.XPATH, "//input[@id='firstName']"
 )
 
-first_name.send_keys("Priyanka")
+first_name.send_keys("Ananyasri")
 
 print("TC02 - First Name entered")
 
@@ -1365,7 +1365,7 @@ email = driver.find_element(
     By.XPATH, "//input[@id='userEmail']"
 )
 
-email.send_keys("priyanka.student@saveetha.in")
+email.send_keys("ananyasri.student@saveetha.in")
 
 print("TC03 - Email entered")
 
@@ -1389,7 +1389,7 @@ last_name = driver.find_element(
     By.XPATH, "//input[contains(@id,'lastName')]"
 )
 
-last_name.send_keys("K")
+last_name.send_keys("K N")
 
 print("TC05 - Last Name located using contains()")
 
@@ -1402,7 +1402,7 @@ mobile = driver.find_element(
     By.XPATH, "//input[starts-with(@id,'userNumber')]"
 )
 
-mobile.send_keys("8489246386")
+mobile.send_keys("9042882290")
 
 print("TC06 - Mobile located using starts-with()")
 
@@ -1561,12 +1561,6 @@ second_textbox = driver.find_element(
 )
 
 print("TC16 - Second textbox located")
-
-
-# ============================================================
-# TC17 - Verify submitted message - text()
-# ============================================================
-
 
 # ============================================================
 # TC18 - Find ALL input fields - find_elements()
