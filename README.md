@@ -1320,3 +1320,332 @@ time.sleep(3)
 
 driver.quit()
 ```
+---
+# 8th October 2026
+#### Selenium Xpath Coding
+
+```python
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.keys import Keys
+import time
+
+driver = webdriver.Chrome()
+driver.maximize_window()
+
+# ============================================================
+# TC01 - Open student registration page
+# ============================================================
+
+driver.get("https://demoqa.com/automation-practice-form")
+time.sleep(2)
+
+print("TC01 - Registration page opened")
+
+
+# ============================================================
+# TC02 - Locate username / First Name - Attribute XPath
+# ============================================================
+
+first_name = driver.find_element(
+    By.XPATH, "//input[@id='firstName']"
+)
+
+first_name.send_keys("Priyanka")
+
+print("TC02 - First Name entered")
+
+
+# ============================================================
+# TC03 - Password
+# ============================================================
+
+email = driver.find_element(
+    By.XPATH, "//input[@id='userEmail']"
+)
+
+email.send_keys("priyanka.student@saveetha.in")
+
+print("TC03 - Email entered")
+
+
+# ============================================================
+# TC04 - Locate Submit - text()
+# ============================================================
+
+submit = driver.find_element(
+    By.XPATH, "//button[text()='Submit']"
+)
+
+print("TC04 - Submit located")
+
+
+# ============================================================
+# TC05 - Locate textbox dynamically - contains()
+# ============================================================
+
+last_name = driver.find_element(
+    By.XPATH, "//input[contains(@id,'lastName')]"
+)
+
+last_name.send_keys("K")
+
+print("TC05 - Last Name located using contains()")
+
+
+# ============================================================
+# TC06 - Locate element with prefix - starts-with()
+# ============================================================
+
+mobile = driver.find_element(
+    By.XPATH, "//input[starts-with(@id,'userNumber')]"
+)
+
+mobile.send_keys("8489246386")
+
+print("TC06 - Mobile located using starts-with()")
+
+
+# ============================================================
+# TC07 - Find input using TWO attributes - and
+# ============================================================
+
+first_name_check = driver.find_element(
+    By.XPATH,
+    "//input[@id='firstName' and @placeholder='First Name']"
+)
+
+print("TC07 - Element located using AND")
+
+
+# ============================================================
+# TC08 - Find element using alternatives - or
+# ============================================================
+
+input_element = driver.find_element(
+    By.XPATH,
+    "//input[@type='text' or @type='email']"
+)
+
+print("TC08 - Element located using OR")
+
+
+# ============================================================
+# TC09 - Find parent form/group -  parent
+# ============================================================
+
+first_name_parent = driver.find_element(
+    By.XPATH,
+    "//input[@id='firstName']/parent::*"
+)
+
+print("TC09 - Parent element located")
+
+
+# ============================================================
+# TC10 - Find FORM from input - ancestor
+# ============================================================
+
+form = driver.find_element(
+    By.XPATH,
+    "//input[@id='firstName']/ancestor::form"
+)
+
+print("TC10 - Form located using ancestor")
+
+
+# ============================================================
+# TC11 - Find child inputs - child
+# ============================================================
+
+child_inputs = driver.find_elements(
+    By.XPATH,
+    "//form/child::div//input"
+)
+
+print("TC11 - Child inputs located")
+print("Number of child inputs:", len(child_inputs))
+
+
+# ============================================================
+# TC12 - Find next element - following
+# ============================================================
+
+next_input = driver.find_element(
+    By.XPATH,
+    "//input[@id='firstName']/following::input[1]"
+)
+
+print("TC12 - Following element located")
+
+
+# ============================================================
+# TC13 - Find checkbox - Attribute XPath
+# ============================================================
+
+hobby_sports = driver.find_element(
+    By.XPATH,
+    "//input[@id='hobbies-checkbox-1']"
+)
+
+# The actual checkbox can be hidden behind its label.
+# Click the label instead.
+hobby_label = driver.find_element(
+    By.XPATH,
+    "//label[@for='hobbies-checkbox-1']"
+)
+
+hobby_label.click()
+
+print("TC13 - Sports checkbox selected")
+
+
+# ============================================================
+# TC14 - Find radio button - Attribute XPath
+# ============================================================
+
+male_radio = driver.find_element(
+    By.XPATH,
+    "//input[@id='gender-radio-2']"
+)
+
+male_label = driver.find_element(
+    By.XPATH,
+    "//label[@for='gender-radio-2']"
+)
+
+male_label.click()
+
+print("TC14 - Female radio button selected")
+
+# ============================================================
+# TC15 - Select State dropdown
+# ============================================================
+
+state_input = driver.find_element(
+    By.XPATH,
+    "/html/body/div/div/div/div/div[2]/div[1]/form/div[10]/div[2]/div/div/div[1]/div[2]/input"
+)
+
+driver.execute_script(
+    "arguments[0].scrollIntoView({block:'center'});",
+    state_input
+)
+
+time.sleep(2)
+
+# JavaScript click because normal Selenium click is intercepted
+driver.execute_script(
+    "arguments[0].click();",
+    state_input
+)
+
+time.sleep(2)
+
+state_input.send_keys("NCR")
+
+time.sleep(2)
+
+state_input.send_keys(Keys.ENTER)
+
+print("TC15 - State selected")
+
+# ============================================================
+# TC16 - Find SECOND textbox - XPath index
+# ============================================================
+
+second_textbox = driver.find_element(
+    By.XPATH,
+    "(//input[@type='text'])[2]"
+)
+
+print("TC16 - Second textbox located")
+
+
+# ============================================================
+# TC17 - Verify submitted message - text()
+# ============================================================
+
+
+# ============================================================
+# TC18 - Find ALL input fields - find_elements()
+# ============================================================
+
+all_inputs = driver.find_elements(
+    By.XPATH,
+    "//input"
+)
+
+print("TC18 - All input fields located")
+print("Total input fields:", len(all_inputs))
+
+
+# ============================================================
+# TC19 - Find dynamic element - contains()
+# ============================================================
+
+dynamic_element = driver.find_element(
+    By.XPATH,
+    "//input[contains(@id,'user')]"
+)
+
+print("TC19 - Dynamic element located")
+
+
+# ============================================================
+# TC20 - Complete registration
+# ============================================================
+
+# Address
+address = driver.find_element(
+    By.XPATH,
+    "//textarea[@id='currentAddress']"
+)
+
+address.send_keys("Chennai, Tamil Nadu")
+
+
+# Select City
+city_dropdown = driver.find_element(
+    By.XPATH,
+    "//div[contains(@id,'city')]"
+)
+
+city_dropdown.click()
+
+time.sleep(2)
+
+city_option = driver.find_element(
+    By.XPATH,
+    "//div[text()='Delhi']"
+)
+
+city_option.click()
+
+
+# Click Submit
+submit.click()
+
+time.sleep(2)
+
+
+# ============================================================
+# TC17 - Verify successful submission
+# ============================================================
+
+success_message = driver.find_element(
+    By.XPATH,
+    "//*[text()='Thanks for submitting the form']"
+)
+
+if success_message.is_displayed():
+    print("TC17 - Submission successful")
+
+
+print("TC20 - Registration automation completed successfully!")
+
+time.sleep(5)
+
+driver.quit()
+```
