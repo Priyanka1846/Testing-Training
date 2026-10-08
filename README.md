@@ -1352,7 +1352,7 @@ first_name = driver.find_element(
     By.XPATH, "//input[@id='firstName']"
 )
 
-first_name.send_keys("Ananyasri")
+first_name.send_keys("Priyanka")
 
 print("TC02 - First Name entered")
 
@@ -1365,7 +1365,7 @@ email = driver.find_element(
     By.XPATH, "//input[@id='userEmail']"
 )
 
-email.send_keys("ananyasri.student@saveetha.in")
+email.send_keys("priyanka.student@saveetha.in")
 
 print("TC03 - Email entered")
 
@@ -1389,7 +1389,7 @@ last_name = driver.find_element(
     By.XPATH, "//input[contains(@id,'lastName')]"
 )
 
-last_name.send_keys("K N")
+last_name.send_keys("K")
 
 print("TC05 - Last Name located using contains()")
 
@@ -1402,7 +1402,7 @@ mobile = driver.find_element(
     By.XPATH, "//input[starts-with(@id,'userNumber')]"
 )
 
-mobile.send_keys("9042882290")
+mobile.send_keys("8489246386")
 
 print("TC06 - Mobile located using starts-with()")
 
