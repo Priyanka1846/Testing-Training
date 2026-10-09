@@ -1646,7 +1646,7 @@ driver.quit()
 ---
 # 9th October 2026
 
-#### Selenium - Web Tables Assignment
+### Selenium - Web Tables Assignment
 
 ```python
 
