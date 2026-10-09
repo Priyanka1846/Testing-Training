@@ -1643,3 +1643,210 @@ time.sleep(5)
 
 driver.quit()
 ```
+---
+# 9th October 2026
+
+#### Selenium - Web Tables Assignment
+
+```python
+
+import time
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+driver = webdriver.Chrome()
+driver.maximize_window()
+
+wait = WebDriverWait(driver, 15)
+
+driver.get("https://assertqa.com/practice/webtables")
+
+wait.until(EC.presence_of_element_located((By.TAG_NAME, "table")))
+
+print("Website opened successfully", flush=True)
+
+# TC01 - Print all column headings
+
+print("\nTC01 - Print all column headings")
+
+table = driver.find_element(By.TAG_NAME, "table")
+headers = table.find_elements(By.CSS_SELECTOR, "thead th")
+
+for header in headers:
+    print(header.text)
+
+print("TC01 PASS")
+time.sleep(2)
+
+
+# TC02 - Print the first data row
+
+print("\nTC02 - Print the first data row")
+
+rows = table.find_elements(By.CSS_SELECTOR, "tbody tr")
+
+if rows:
+    print(rows[0].text)
+    driver.execute_script("arguments[0].scrollIntoView({block:'center'});",rows[0])
+    print("TC02 PASS")
+else:
+    print("TC02 FAIL")
+
+time.sleep(2)
+
+
+# TC03 - Print the last data row
+
+print("\nTC03 - Print the last data row")
+
+if rows:
+    driver.execute_script("arguments[0].scrollIntoView({block:'center'});",rows[-1])
+    print(rows[-1].text)
+    print("TC03 PASS")
+else:
+    print("TC03 FAIL")
+
+time.sleep(2)
+
+
+# TC04 - Search for an employee by last name
+
+print("\nTC04 - Search for an employee by last name")
+
+headers_text = [h.text.strip().lower() for h in headers]
+
+if "last name" in headers_text and rows:
+    last_name = "Brown"
+    search = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "input[data-cy='search-input']")))
+
+    driver.execute_script("""
+        window.scrollTo(0, 0);
+        arguments[0].scrollIntoView({
+            block: 'center',
+            inline: 'center'
+        });
+        arguments[0].focus();
+    """, search)
+
+    search.send_keys(last_name)
+
+    print("Searching for:", last_name, flush=True)
+    time.sleep(2)
+
+    print("Search results:")
+
+    search_rows = driver.find_elements(By.CSS_SELECTOR, "tbody tr")
+
+    matches = []
+
+    for row in search_rows:
+        if row.text.strip():
+            cells = row.find_elements(By.TAG_NAME, "td")
+
+            if (len(cells) > headers_text.index("last name")
+                and cells[headers_text.index("last name")].text.strip().lower()
+                == last_name.lower()):
+                matches.append(row.text)
+                print(row.text)
+
+    if matches:
+        print("TC04 PASS")
+    else:
+        print("TC04 FAIL - No matching employee found")
+
+    search.clear()
+
+else:
+    print("TC04 FAIL - Last Name column or data rows not found")
+
+time.sleep(2)
+
+
+# TC05 - Extract all email addresses
+
+print("\nTC05 - Extract all email addresses")
+
+email_index = next((i for i, h in enumerate(headers_text) if "email" in h),None)
+
+emails = []
+
+if email_index is not None:
+    for row in driver.find_elements(By.CSS_SELECTOR, "tbody tr"):
+        cells = row.find_elements(By.TAG_NAME, "td")
+
+        if len(cells) > email_index:
+            email = cells[email_index].text.strip()
+
+            if "@" in email:
+                emails.append(email)
+
+for email in emails:
+    print(email)
+
+print("TC05", "PASS" if emails else "FAIL")
+
+time.sleep(2)
+
+
+# TC06 - Find employee with highest Due amount
+
+print("\nTC06 - Find employee with highest Due amount")
+
+due_index = next((i for i, h in enumerate(headers_text) if "due" in h),None)
+
+employee_due = []
+
+if due_index is not None:
+    for row in driver.find_elements(By.CSS_SELECTOR, "tbody tr"):
+        cells = row.find_elements(By.TAG_NAME, "td")
+
+        if len(cells) > due_index:
+            try:
+                amount = float(cells[due_index].text.replace("$", "").replace(",", ""))
+                employee_due.append((amount, row.text))
+
+            except ValueError:
+                pass
+
+if employee_due:
+    highest = max(employee_due, key=lambda x: x[0])
+
+    print("Highest Due:", highest[0])
+    print("Employee:", highest[1])
+    print("TC06 PASS")
+else:
+    print("TC06 FAIL - Due column or numeric values not found")
+
+time.sleep(2)
+
+
+# TC07 - Verify website link exists
+
+print("\nTC07 - Verify website link exists")
+
+links = driver.find_elements(By.CSS_SELECTOR, "table a[href]")
+
+if links:
+    print("Website URL:", links[0].get_attribute("href"))
+    print("TC07 PASS")
+else:
+    print("TC07 FAIL - No link found in the table")
+
+time.sleep(2)
+
+
+# TC08 - Count data rows without header
+
+print("\nTC08 - Count data rows")
+
+data_rows = [row for row in driver.find_elements(By.CSS_SELECTOR, "tbody tr")if row.text.strip()]
+
+print("Total data rows:", len(data_rows))
+print("TC08", "PASS" if data_rows else "FAIL")
+
+print("\nAll test cases completed.")
+driver.quit()
+```
